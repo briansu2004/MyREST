@@ -20,6 +20,27 @@ Additionally, merge-patch+json provides a standardized way to express partial up
 
 In summary, while application/json is a versatile media type for representing data in JSON format, application/merge-patch+json offers additional benefits for partial updates of resources, such as improved efficiency and interoperability.
 
+### Can you give me an example of REST request with application/merge-patch+json format?
+
+Sure, here's an example of a REST request with application/merge-patch+json format:
+
+```bash
+PATCH /collectionTreatmentMgmt/v1/collectionTreatmentStep/123 HTTP/1.1
+Host: example.com
+Content-Type: application/merge-patch+json
+Content-Length: 25
+
+{
+  "status": "completed"
+}
+```
+
+In this example, the request is being sent to the /collectionTreatmentMgmt/v1/collectionTreatmentStep/123 endpoint using the HTTP PATCH method. The request body contains a JSON payload with the update to be applied to the CollectionTreatmentStep object with id 123.
+
+The JSON payload uses the merge-patch format, which allows for a partial update of the object. In this case, only the status property of the object is being updated to "completed".
+
+Note that the Content-Type header is set to application/merge-patch+json to indicate that the payload is in the merge-patch format.
+
 ## REST Discovery
 
 - Convention /api !
