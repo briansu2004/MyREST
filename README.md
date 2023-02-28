@@ -2,6 +2,23 @@
 
 My REST
 
+## My REST projects
+
+...
+
+## application/merge-patch+json
+
+### Why we need `application/merge-patch+json`? application/json is not good enough?
+
+While application/json is a widely used media type for representing and exchanging data in JSON format, it does have some limitations when it comes to updating resources.
+
+When updating resources using HTTP PUT or PATCH requests, the entire resource representation is usually sent in the request body. With application/json, this means that the entire resource object must be sent, including any unchanged properties. This can be inefficient, especially when dealing with large resources.
+
+To address this issue, application/merge-patch+json was introduced as a media type that allows for partial updates of resources. With merge-patch+json, the server can merge the representation in the request body with the current state of the resource, applying only the changes that are specified in the request. This can help reduce the amount of data that needs to be sent and processed, which can be particularly useful in scenarios where bandwidth or processing power is limited.
+
+Additionally, merge-patch+json provides a standardized way to express partial updates, which can help improve interoperability between different systems and APIs.
+
+In summary, while application/json is a versatile media type for representing data in JSON format, application/merge-patch+json offers additional benefits for partial updates of resources, such as improved efficiency and interoperability.
 
 ## REST Discovery
 
@@ -17,19 +34,19 @@ My REST
 
 - HATEOAS
 
-- SoapUI can discover the REST services. 
+- SoapUI can discover the REST services.
 
-    It works as a proxy, writing down all requests/responses that pass through. Having requests and responses SoapUI recreates descriptions/definitions of the services. Now the definitions can be stored in WADL and WSDL formats (as WSDL and XML-Schema in XML world). It also can be stored in Swagger format. 
-    
+    It works as a proxy, writing down all requests/responses that pass through. Having requests and responses SoapUI recreates descriptions/definitions of the services. Now the definitions can be stored in WADL and WSDL formats (as WSDL and XML-Schema in XML world). It also can be stored in Swagger format.
+
     Swagger can be stored in SwaggerHub right from SoapUI, which is like GitHub for source code. SwaggerHub is one of many API management systems.
-    
+
 - Traditional way
 
 ## REST load balancing
 
 - Cloud
-    - Auto scaling with K8S, OpenShift, Docker, Apache etc.
-    - AWS, Azure, GCP have their offers
+  - Auto scaling with K8S, OpenShift, Docker, Apache etc.
+  - AWS, Azure, GCP have their offers
 
 - BFF Gateway (i.e. Kong)
 
@@ -48,6 +65,7 @@ The word “Resilience” means “the ability to recover quickly from difficult
 How do you make an API resilient?
 
 Tips for resilient API design
+
 - Use headers to convey upcoming events / Information. ...
 - Always return information where possible. ...
 - Put meaningful data in API tokens to reduce DDoS Load. ...
@@ -55,7 +73,6 @@ Tips for resilient API design
 - Tell the client what to do in the error reply. ...
 - Mark every request with a specific request ID. ...
 - Set your User-Agent.
-
 
 Resilience in Spring Boot Microservices using Netflix Hystrix
 
@@ -120,4 +137,3 @@ hystrix.command.default.metrics.rollingStats.timeInMilliseconds=10000
 hystrix.command.default.circuitBreaker.errorThresholdPercentage=50
 hystrix.command.default.circuitBreaker.sleepWindowInMilliseconds=30000
 ```
-
